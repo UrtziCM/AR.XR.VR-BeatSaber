@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     // START Scoring
     [SerializeField]
     private int scoreToEnd;
-    public bool ShouldGameEnd => ScoreManager.Score > scoreToEnd;
+    public bool ShouldGameEnd => ScoreManager.Score >= scoreToEnd;
     // END Scoring
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
         {
             accumulatedTime = 0;
             SpawnSliceable();
+        }
+
+        if (ShouldGameEnd)
+        {
+            Debug.Log("Game end");
+            Application.Quit();
         }
     }
 
