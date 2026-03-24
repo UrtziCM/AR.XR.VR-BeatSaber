@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Blade : MonoBehaviour
@@ -26,7 +27,7 @@ public class Blade : MonoBehaviour
     {
         if (other.CompareTag("Sliceable"))
         {
-            Destroy(other.gameObject);
+            StartCoroutine(other.gameObject.GetComponent<Sliceable>().Slice());
             ScoreManager.AddScore(1);
         }
     }
