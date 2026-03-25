@@ -34,7 +34,6 @@ public class Sliceable : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         particles.Play();
         yield return new WaitForSeconds(particles.main.duration);
-        if (gameObject != null)
-            Destroy(gameObject);
+        timeToLive = -1;
     }
 }

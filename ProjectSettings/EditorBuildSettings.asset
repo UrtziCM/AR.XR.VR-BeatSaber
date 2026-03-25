@@ -6,8 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UrtziCMendizabal/Scenes/MainScene.unity
+    path: Assets/UrtziCMendizabal/Scenes/EasyMode.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: cab15b522f75d2c4a846f82b8652214b, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: fc5c47aa6e615754c8608c24f33a277b, type: 2}
   m_UseUCBPForAssetBundles: 0
