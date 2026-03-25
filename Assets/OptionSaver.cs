@@ -6,10 +6,17 @@ public class OptionSaver : MonoBehaviour
     private bool doubleSaber;
     private int targetScore;
 
+
+
     [SerializeField]
     Toggle DoubleSaberToggle;
     [SerializeField]
     Text DoubleSaberToggleText;
+
+    [SerializeField]
+    Slider targetScoreSlider;
+    [SerializeField]
+    Text sliderText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +36,11 @@ public class OptionSaver : MonoBehaviour
         doubleSaber = DoubleSaberToggle.isOn;
         DoubleSaberToggleText.text = (DoubleSaberToggle.isOn)?"Dos sables":"Un sable";
 
+    }
+
+    public void TargetScoreSliderChanged()
+    {
+        sliderText.text = targetScoreSlider.value+"";
     }
 
     private void OnDestroy()
