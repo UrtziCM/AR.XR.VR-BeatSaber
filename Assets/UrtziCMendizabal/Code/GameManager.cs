@@ -10,12 +10,18 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject sliceablePrefab;
     [SerializeField]
+    private GameObject bombSliceablePrefab;
+    [SerializeField]
     private float distance;
+    [SerializeField]
+    private float bombProbability = .8f;
     // END Spawning 
     [Header("Scoring options")]
     // START Scoring
     [SerializeField]
-    private int scoreToEnd;
+    public int scoreToEnd;
+    public bool hardMode;
+
     public bool ShouldGameEnd => ScoreManager.Score >= scoreToEnd;
     // END Scoring
 
@@ -44,7 +50,12 @@ public class GameManager : MonoBehaviour
 
     private void SpawnSliceable()
     {
-        GameObject sliceableGameObject = Instantiate(sliceablePrefab);
+        GameObject sliceableGameObject;
+        if (hardMode && Random.value > bombProbability)
+            sliceableGameObject = Instantiate(bombSliceablePrefab);
+        else
+            sliceableGameObject = Instantiate(sliceablePrefab);
+
         Sliceable sliceableComponent = sliceableGameObject.GetComponent<Sliceable>();
 
         Vector3 desiredPosition = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized * distance)

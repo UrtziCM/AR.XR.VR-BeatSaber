@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   timeToLive: 15
+  score: 1
 --- !u!198 &4239282251784866100
 ParticleSystem:
   m_ObjectHideFlags: 0

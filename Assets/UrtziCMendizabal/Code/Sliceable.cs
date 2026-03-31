@@ -13,6 +13,9 @@ public class Sliceable : MonoBehaviour
     private Vector3 direction;
     public Vector3 Direction { get { return direction; } set { direction = value; } }
 
+    [SerializeField]
+    public int score;
+
 
     private Rigidbody rb;
     void Start()

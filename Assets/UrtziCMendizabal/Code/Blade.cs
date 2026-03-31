@@ -27,8 +27,9 @@ public class Blade : MonoBehaviour
     {
         if (other.CompareTag("Sliceable"))
         {
-            StartCoroutine(other.gameObject.GetComponent<Sliceable>().Slice());
-            ScoreManager.AddScore(1);
+            Sliceable sl = other.gameObject.GetComponent<Sliceable>();
+            StartCoroutine(sl.Slice());
+            ScoreManager.AddScore(sl.score);
         }
     }
 }

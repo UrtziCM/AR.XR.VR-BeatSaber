@@ -245,6 +245,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 202364688, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
   m_PrefabInstance: {fileID: 1346067403}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &297297394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297297396}
+  - component: {fileID: 297297395}
+  m_Layer: 0
+  m_Name: OptionLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &297297395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297297394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5aedbebd452e0458a001b314291f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftSaber: {fileID: 3694287964494423486}
+  gm: {fileID: 460227680}
+--- !u!4 &297297396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297297394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &389462712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1670256625, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -402,8 +448,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInbetweenSpawns: 2
   sliceablePrefab: {fileID: 5001464362242985877, guid: 627a94b3856a97d468653b8c5f76dc50, type: 3}
+  bombSliceablePrefab: {fileID: 2245505045167833554, guid: baee2b6ed8d978a499d84da488af2dbe, type: 3}
   distance: 10
   scoreToEnd: 20
+  hardMode: 0
 --- !u!4 &460227681
 Transform:
   m_ObjectHideFlags: 0
@@ -1117,6 +1165,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d6f709a471d8940b357eef435a145a, type: 3}
+--- !u!1 &3694287964494423486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 86614861012430939, guid: 39d6f709a471d8940b357eef435a145a, type: 3}
+  m_PrefabInstance: {fileID: 3694287964494423485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1126,5 +1179,6 @@ SceneRoots:
   - {fileID: 1717635319}
   - {fileID: 1346067403}
   - {fileID: 460227681}
+  - {fileID: 297297396}
   - {fileID: 854766656}
   - {fileID: 941245262}
