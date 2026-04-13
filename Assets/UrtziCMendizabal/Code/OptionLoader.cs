@@ -1,22 +1,44 @@
+using System;
 using UnityEngine;
 
 public class OptionLoader : MonoBehaviour
 {
     [SerializeField]
-    private GameObject leftSaber;
-    [SerializeField] 
     private GameManager gm;
+
+    [SerializeField]
+    private GameObject singleSwordPrefab;
+    [SerializeField]
+    private GameObject multiSwordPrefab;
+    [SerializeField]
+    private GameObject bowPrefab;
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("doubleSaber") == 0)
-            leftSaber.SetActive(false);
+        SpawnWeapon(PlayerPrefs.GetInt("weapon", 0));
 
         gm.scoreToEnd = PlayerPrefs.GetInt("targetScore", 10);
 
-        gm.hardMode = PlayerPrefs.GetInt("hardMode") == 1;
+        gm.mode = PlayerPrefs.GetInt("mode");
 
-        Debug.Log("score:"+gm.scoreToEnd);
     }
 
+
+
+    private void SpawnWeapon(int v)
+    {
+        switch (v)
+        {
+            case 0:
+                Instantiate(singleSwordPrefab);
+                break;
+            case 1:
+                Instantiate(multiSwordPrefab);
+                break;
+            case 2:
+                Instantiate(bowPrefab);
+                break;
+
+        }
+    }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject bombSliceablePrefab;
     [SerializeField]
+    private GameObject directionalSliceablePrefab;
+    [SerializeField]
     private float distance;
     [SerializeField]
     private float bombProbability = .8f;
@@ -20,7 +23,7 @@ public class GameManager : MonoBehaviour
     // START Scoring
     [SerializeField]
     public int scoreToEnd;
-    public bool hardMode;
+    public int mode;
 
     public bool ShouldGameEnd => ScoreManager.Score >= scoreToEnd;
     // END Scoring
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -43,25 +46,37 @@ public class GameManager : MonoBehaviour
 
         if (ShouldGameEnd)
         {
-            Debug.Log("Game end");
-            Application.Quit();
+            SceneManager.LoadScene("MenuScene");
         }
     }
 
     private void SpawnSliceable()
     {
-        GameObject sliceableGameObject;
-        if (hardMode && Random.value > bombProbability)
-            sliceableGameObject = Instantiate(bombSliceablePrefab);
-        else
-            sliceableGameObject = Instantiate(sliceablePrefab);
-
-        Sliceable sliceableComponent = sliceableGameObject.GetComponent<Sliceable>();
-
+        GameObject sliceableGameObject = null;
+        switch (mode)
+        {
+            case 0:
+                sliceableGameObject = Instantiate(sliceablePrefab);
+                break;
+            case 1:
+                if (Random.value > bombProbability)
+                {
+                    sliceableGameObject = Instantiate(bombSliceablePrefab);
+                }
+                else
+                {
+                    Instantiate(sliceablePrefab);
+                }
+                break;
+            case 2:
+                Instantiate(directionalSliceablePrefab);
+                break;
+        }
+        Sliceable sliceableComponent = sliceableGameObject?.GetComponent<Sliceable>();
         Vector3 desiredPosition = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized * distance)
             + new Vector3(0, Camera.main.transform.position.y); // Add camera height to position to keep at eye level
-        sliceableGameObject.transform.position = Quaternion.AngleAxis(Random.Range(-30,30), Vector3.up) * desiredPosition;
+        sliceableGameObject.transform.position = Quaternion.AngleAxis(Random.Range(-15, 15), Vector3.up) * desiredPosition;
 
-        sliceableComponent.Direction = (Camera.main.transform.position - desiredPosition).normalized;
+        sliceableComponent.direction = (Camera.main.transform.position - desiredPosition).normalized;
     }
 }

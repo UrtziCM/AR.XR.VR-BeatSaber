@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent (typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class Sliceable : MonoBehaviour
 {
     [SerializeField]
@@ -9,15 +9,14 @@ public class Sliceable : MonoBehaviour
     [SerializeField]
     private float timeToLive;
 
-    private ParticleSystem particles;
-    private Vector3 direction;
-    public Vector3 Direction { get { return direction; } set { direction = value; } }
+    protected ParticleSystem particles;
+    public Vector3 direction;
 
     [SerializeField]
     public int score;
 
 
-    private Rigidbody rb;
+    protected Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,9 +24,10 @@ public class Sliceable : MonoBehaviour
     }
     void Update()
     {
-        rb.MovePosition(transform.position + (speed * Time.deltaTime * direction));
+        rb.MovePosition(transform.position+ (speed *Time.deltaTime *direction));
+
         timeToLive -= Time.deltaTime;
-        if (timeToLive <= 0 )
+        if (timeToLive <= 0)
         {
             Destroy(gameObject);
         }
